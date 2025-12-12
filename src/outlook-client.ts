@@ -35,7 +35,7 @@ export class OutlookClient {
 
   private getHeaders() {
     if (!this.accessToken) {
-      throw new Error('Access token is required. Please provide a valid Microsoft Graph API access token.');
+      throw new Error('Access token is required. Please obtain an access token from Microsoft Graph Explorer: https://developer.microsoft.com/en-us/graph/graph-explorer');
     }
     return {
       'Authorization': `Bearer ${this.accessToken}`,
@@ -69,7 +69,7 @@ export class OutlookClient {
       return response.data.value;
     } catch (error: any) {
       if (error.response?.status === 401) {
-        throw new Error('Invalid or expired access token. Please provide a new token.');
+        throw new Error('Invalid or expired access token. Please obtain a new token from Microsoft Graph Explorer: https://developer.microsoft.com/en-us/graph/graph-explorer');
       }
       throw new Error(`Failed to list emails: ${error.message}`);
     }
@@ -85,7 +85,7 @@ export class OutlookClient {
       return response.data;
     } catch (error: any) {
       if (error.response?.status === 401) {
-        throw new Error('Invalid or expired access token. Please provide a new token.');
+        throw new Error('Invalid or expired access token. Please obtain a new token from Microsoft Graph Explorer: https://developer.microsoft.com/en-us/graph/graph-explorer');
       }
       if (error.response?.status === 404) {
         throw new Error(`Email with ID ${messageId} not found.`);
@@ -102,7 +102,7 @@ export class OutlookClient {
       });
     } catch (error: any) {
       if (error.response?.status === 401) {
-        throw new Error('Invalid or expired access token. Please provide a new token.');
+        throw new Error('Invalid or expired access token. Please obtain a new token from Microsoft Graph Explorer: https://developer.microsoft.com/en-us/graph/graph-explorer');
       }
       throw new Error(`Failed to mark email as read: ${error.message}`);
     }
@@ -116,7 +116,7 @@ export class OutlookClient {
       });
     } catch (error: any) {
       if (error.response?.status === 401) {
-        throw new Error('Invalid or expired access token. Please provide a new token.');
+        throw new Error('Invalid or expired access token. Please obtain a new token from Microsoft Graph Explorer: https://developer.microsoft.com/en-us/graph/graph-explorer');
       }
       throw new Error(`Failed to delete email: ${error.message}`);
     }

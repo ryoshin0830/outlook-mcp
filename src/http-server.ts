@@ -147,7 +147,7 @@ app.post('/rpc', async (req, res) => {
     if (error.message.includes('Access token is required') ||
         error.message.includes('Invalid or expired access token')) {
       return res.status(401).json({
-        error: 'Please set a valid Microsoft Graph API access token first.'
+        error: 'Access token is missing or invalid. Please obtain an access token from Microsoft Graph Explorer: https://developer.microsoft.com/en-us/graph/graph-explorer'
       });
     }
     return res.status(500).json({ error: error.message });

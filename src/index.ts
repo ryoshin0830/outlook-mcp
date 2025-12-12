@@ -327,7 +327,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         error.message.includes('Invalid or expired access token')) {
       throw new McpError(
         ErrorCode.InvalidParams,
-        'Please set a valid Microsoft Graph API access token first using the set_access_token tool.'
+        'Access token is missing or invalid. Please obtain an access token from Microsoft Graph Explorer (https://developer.microsoft.com/en-us/graph/graph-explorer) and set it using the set_access_token tool.'
       );
     }
 
